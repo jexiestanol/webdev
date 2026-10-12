@@ -1,0 +1,403 @@
+:root {
+  color: #f7f4eb;
+  background: #1c1c19;
+  font-family: Arial, Helvetica, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-width: 320px;
+  min-height: 100%;
+  background: #1c1c19;
+}
+
+body {
+  margin: 0;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+p,
+h1,
+h2 {
+  margin: 0;
+}
+
+/* Main container */
+
+.page-shell {
+  width: min(100%, 1440px);
+  min-height: 100vh;
+  min-height: 100dvh;
+  padding: 8px;
+}
+
+/* Bootstrap row */
+
+.bento {
+  min-height: calc(100vh - 16px);
+  min-height: calc(100dvh - 16px);
+
+  --bs-gutter-x: 20px;
+  --bs-gutter-y: 20px;
+}
+
+.left-stack,
+.right-stack {
+  gap: 20px;
+  min-height: calc(100vh - 16px);
+  min-height: calc(100dvh - 16px);
+}
+
+/* Shared card styles */
+
+.card-panel {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+}
+
+/* Hero card */
+
+.hero-card {
+  flex: 0 0 calc(49% - 10px);
+}
+
+.hero-card img,
+.loaf-card img,
+.table-card img {
+  transition: transform 700ms cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.hero-card img {
+  object-position: center 55%;
+}
+
+.hero-card:hover img,
+.loaf-card:hover img,
+.table-card:hover img {
+  transform: scale(1.025);
+}
+
+.photo-shade {
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      90deg,
+      rgba(20, 16, 11, 0.52) 0%,
+      transparent 58%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(15, 13, 9, 0.28) 0%,
+      transparent 45%
+    );
+}
+
+.hero-copy {
+  position: absolute;
+  left: clamp(28px, 4vw, 55px);
+  bottom: clamp(38px, 7vh, 62px);
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.hero-copy .eyebrow {
+  margin-bottom: 14px;
+}
+
+.hero-copy h1 {
+  color: #faf8f0;
+  font-size: clamp(44px, 5vw, 66px);
+  font-weight: 800;
+  line-height: 0.86;
+  letter-spacing: -0.055em;
+}
+
+/* Photo credits */
+
+.photo-credit {
+  position: absolute;
+  right: 17px;
+  bottom: 13px;
+  z-index: 2;
+
+  color: rgba(255, 255, 255, 0.82);
+
+  font-size: 8px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Bottom Bootstrap row */
+
+.lower-row {
+  flex: 1 1 auto;
+  min-height: 0;
+
+  --bs-gutter-x: 20px;
+  --bs-gutter-y: 20px;
+}
+
+/* Yellow title card */
+
+.title-card {
+  flex: 0 0 calc(32% - 10px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  padding: clamp(32px, 3.1vw, 48px);
+
+  color: #181816;
+  background: #f7e958;
+}
+
+.title-card h2 {
+  font-size: clamp(50px, 4.25vw, 66px);
+  font-weight: 800;
+  line-height: 0.86;
+  letter-spacing: -0.06em;
+}
+
+/* Bread card */
+
+.loaf-card img {
+  object-position: center 46%;
+}
+
+.loaf-shade {
+  position: absolute;
+  inset: 0;
+
+  background: linear-gradient(
+    180deg,
+    rgba(15, 12, 11, 0.16),
+    transparent 45%
+  );
+}
+
+.loaf-tag {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+
+  padding: 11px 18px 10px;
+
+  border-radius: 999px;
+
+  color: #161614;
+  background: #f7e958;
+
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Orange ritual card */
+
+.ritual-card {
+  display: flex;
+  flex-direction: column;
+
+  padding: clamp(30px, 3vw, 44px);
+
+  color: #fbf8ef;
+  background: #cf704f;
+}
+
+.ritual-copy {
+  margin-top: auto;
+  margin-bottom: auto;
+
+  font-size: clamp(34px, 3vw, 49px);
+  font-weight: 800;
+  line-height: 0.84;
+  letter-spacing: -0.055em;
+}
+
+.ritual-footer {
+  display: flex;
+  justify-content: space-between;
+
+  padding-top: 19px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.5);
+
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* Right image card */
+
+.table-card {
+  flex: 1 1 auto;
+  min-height: 0;
+}
+
+.table-card img {
+  object-position: center;
+}
+
+.table-caption {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  left: 18px;
+
+  padding: 19px 17px 17px;
+
+  border-radius: 12px;
+
+  color: #f8f5ec;
+  background: rgba(23, 23, 20, 0.92);
+
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.table-caption .eyebrow {
+  margin-bottom: 10px;
+}
+
+.table-caption > p:last-child {
+  color: rgba(255, 255, 255, 0.68);
+
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.table-card > .photo-credit {
+  bottom: 10px;
+}
+
+/* Tablet */
+
+@media (max-width: 991.98px) {
+  .left-stack,
+  .right-stack {
+    min-height: auto;
+  }
+
+  .hero-card {
+    flex-basis: auto;
+    min-height: 52vh;
+  }
+
+  .lower-row {
+    flex: none;
+  }
+
+  .lower-row > div {
+    min-height: 430px;
+  }
+
+  .title-card {
+    flex-basis: auto;
+    min-height: 360px;
+  }
+
+  .table-card {
+    flex: none;
+    min-height: 570px;
+  }
+}
+
+/* Mobile */
+
+@media (max-width: 575.98px) {
+  .page-shell {
+    padding: 6px;
+  }
+
+  .bento,
+  .lower-row {
+    --bs-gutter-x: 10px;
+    --bs-gutter-y: 10px;
+  }
+
+  .left-stack,
+  .right-stack {
+    gap: 10px;
+  }
+
+  .card-panel {
+    border-radius: 17px;
+  }
+
+  .hero-card {
+    min-height: 500px;
+  }
+
+  .hero-card img {
+    object-position: 61% center;
+  }
+
+  .hero-copy {
+    left: 25px;
+    bottom: 45px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(43px, 14vw, 58px);
+  }
+
+  .lower-row > div {
+    min-height: 470px;
+  }
+
+  .title-card {
+    padding: 30px;
+  }
+
+  .title-card h2 {
+    font-size: clamp(52px, 16vw, 70px);
+  }
+
+  .ritual-card {
+    padding: 32px 30px;
+  }
+
+  .ritual-copy {
+    font-size: clamp(40px, 12vw, 53px);
+  }
+
+  .table-card {
+    min-height: 570px;
+  }
+}
+
+/* Accessibility */
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-card img,
+  .loaf-card img,
+  .table-card img {
+    transition: none;
+  }
+}
