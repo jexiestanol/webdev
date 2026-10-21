@@ -1,0 +1,52 @@
+[
+  {
+    "id": 2026102301,
+    "title": "JSON File Website",
+    "subject": "Website Development",
+    "type": "Project",
+    "due": "2026-10-23T15:59:00.000Z",
+    "hours": 4,
+    "importance": 3,
+    "completed": false
+  },
+  {
+    "id": 2026102302,
+    "title": "Midterm Exam — Lessons 1–8",
+    "subject": "Database Administration",
+    "type": "Exam",
+    "due": "2026-10-23T15:59:00.000Z",
+    "hours": 5,
+    "importance": 3,
+    "completed": false
+  },
+  {
+    "id": 2026102201,
+    "title": "Drawing Activity",
+    "subject": "Art Appreciation",
+    "type": "Activity",
+    "due": "2026-10-22T15:59:00.000Z",
+    "hours": 2,
+    "importance": 3,
+    "completed": false
+  },
+  {
+    "id": 2026102202,
+    "title": "Art Appreciation Quiz",
+    "subject": "Art Appreciation",
+    "type": "Quiz",
+    "due": "2026-10-22T15:59:00.000Z",
+    "hours": 1,
+    "importance": 3,
+    "completed": false
+  },
+  {
+    "id": 2026102203,
+    "title": "Art Appreciation Midterm Exam",
+    "subject": "Art Appreciation",
+    "type": "Exam",
+    "due": "2026-10-22T15:59:00.000Z",
+    "hours": 3,
+    "importance": 3,
+    "completed": false
+  }
+]

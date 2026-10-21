@@ -1,0 +1,418 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="LoadMap academic workload planner">
+  <title>LoadMap — Academic Planner</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Serif+Display:ital@0;1&family=Patrick+Hand&display=swap"
+    rel="stylesheet"
+  >
+
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+
+<body>
+  <div class="app-shell">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <button class="brand" data-scroll="overview">
+        <span class="brand-mark">
+          <svg viewBox="0 0 40 40" aria-hidden="true">
+            <path class="petal pink"
+              d="M20 19.5C14.5 16.4 14.8 9.1 20 5c5.2 4.1 5.5 11.4 0 14.5Z">
+            </path>
+
+            <path class="petal lilac"
+              d="M20.5 20C23.6 14.5 30.9 14.8 35 20c-4.1 5.2-11.4 5.5-14.5 0Z">
+            </path>
+
+            <path class="petal pink"
+              d="M20 20.5c5.5 3.1 5.2 10.4 0 14.5-5.2-4.1-5.5-11.4 0-14.5Z">
+            </path>
+
+            <path class="petal lilac"
+              d="M19.5 20C16.4 25.5 9.1 25.2 5 20c4.1-5.2 11.4-5.5 14.5 0Z">
+            </path>
+
+            <circle class="flower-center" cx="20" cy="20" r="6.2"></circle>
+
+            <path class="needle"
+              d="m20 14.7 2.2 5.3-2.2 5.3-2.2-5.3 2.2-5.3Z">
+            </path>
+
+            <path class="point"
+              d="m20 14.7 2.2 5.3H20v-5.3Z">
+            </path>
+
+            <circle class="point" cx="20" cy="20" r="1.15"></circle>
+          </svg>
+        </span>
+
+        <span>Load<span>Map</span></span>
+      </button>
+
+      <nav>
+        <button class="nav-item active" data-scroll="overview">
+          <span class="nav-icon">⌂</span>
+          <span>Overview</span>
+        </button>
+
+        <button class="nav-item" data-scroll="tasks">
+          <span class="nav-icon">✓</span>
+          <span>My Tasks</span>
+        </button>
+
+        <button class="nav-item" data-scroll="workload">
+          <span class="nav-icon">▥</span>
+          <span>Workload</span>
+        </button>
+
+        <button class="nav-item" data-scroll="planner">
+          <span class="nav-icon">□</span>
+          <span>Study Planner</span>
+        </button>
+
+        <button class="nav-item" data-scroll="progress">
+          <span class="nav-icon">↗</span>
+          <span>Progress</span>
+        </button>
+      </nav>
+
+      <div class="sidebar-quote">
+        <span class="quote-mark">“</span>
+        <p>Small steps still move you forward.</p>
+        <span class="quote-flower">✿</span>
+      </div>
+
+      <div class="profile">
+        <div class="avatar">AM</div>
+
+        <div>
+          <strong>Jexequiel Estanol</strong>
+          <span>3rdYear Student</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT -->
+    <main>
+      <header class="topbar">
+        <button class="mobile-brand" data-scroll="overview">LM</button>
+
+        <div class="search-box">
+          <span>⌕</span>
+
+          <input
+            id="searchInput"
+            type="search"
+            placeholder="Search tasks or subjects..."
+          >
+        </div>
+
+        <button class="notification-button" aria-label="Notifications">
+          ♧
+        </button>
+
+        <button class="add-button" id="openModal">
+          <span>＋</span>
+          Add new task
+        </button>
+      </header>
+
+      <div class="content">
+
+        <!-- WELCOME -->
+        <section id="overview" class="welcome">
+          <div>
+            <p class="eyebrow">YOUR FRESH START</p>
+
+            <h1>
+              Good morning, Jexi
+              <span>✦</span>
+            </h1>
+
+            <p>
+              You have a focused week ahead. Let’s make it feel lighter.
+            </p>
+          </div>
+
+          <div class="date-pill">
+            <span class="date-icon">□</span>
+
+            <div>
+              <span>Today</span>
+              <strong id="todayDate"></strong>
+            </div>
+          </div>
+        </section>
+
+        <!-- STATISTICS -->
+        <section class="stats-grid">
+          <article class="stat-card blush">
+            <div class="stat-icon">◷</div>
+
+            <div>
+              <span>Due soon</span>
+              <strong id="dueSoon">0</strong>
+              <small>tasks in the next 2 days</small>
+            </div>
+          </article>
+
+          <article class="stat-card lilac-card">
+            <div class="stat-icon">▤</div>
+
+            <div>
+              <span>Study time</span>
+
+              <strong>
+                <span id="totalHours">0</span>
+                <i>h</i>
+              </strong>
+
+              <small>estimated this week</small>
+            </div>
+          </article>
+
+          <article class="stat-card mint">
+            <div class="stat-icon">✓</div>
+
+            <div>
+              <span>Completed</span>
+              <strong id="completedCount">0</strong>
+              <small id="completedPercent">0% of all tasks</small>
+            </div>
+          </article>
+
+          <article class="stat-card peach">
+            <div class="stat-icon">↗</div>
+
+            <div>
+              <span>On-track score</span>
+
+              <strong>
+                84<i>%</i>
+              </strong>
+
+              <small>Looking lovely</small>
+            </div>
+          </article>
+        </section>
+
+        <div class="dashboard-grid">
+
+          <!-- LEFT COLUMN -->
+          <div class="primary-column">
+
+            <!-- TASKS -->
+            <section class="panel priority-panel" id="tasks">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">SMART PRIORITY</p>
+                  <h2>What to focus on</h2>
+                </div>
+
+                <button data-scroll="planner">
+                  See full plan →
+                </button>
+              </div>
+
+              <div class="task-list" id="taskList"></div>
+            </section>
+
+            <!-- WORKLOAD -->
+            <section class="panel" id="workload">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">WEEKLY RHYTHM</p>
+                  <h2>Your workload map</h2>
+                </div>
+
+                <div class="capacity-control">
+                  <span>Daily capacity</span>
+
+                  <button id="capacityDown">−</button>
+
+                  <strong>
+                    <span id="capacityValue">4</span>h
+                  </strong>
+
+                  <button id="capacityUp">＋</button>
+                </div>
+              </div>
+
+              <div class="chart-wrap">
+                <div class="chart-y">
+                  <span>6h</span>
+                  <span>4h</span>
+                  <span>2h</span>
+                  <span>0h</span>
+                </div>
+
+                <div class="chart" id="workloadChart"></div>
+              </div>
+
+              <div class="insight" id="workloadInsight"></div>
+            </section>
+          </div>
+
+          <!-- RIGHT COLUMN -->
+          <aside class="secondary-column">
+
+            <!-- STUDY PLANNER -->
+            <section class="panel schedule-panel" id="planner">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">GENTLE PLAN</p>
+                  <h2>Today’s schedule</h2>
+                </div>
+              </div>
+
+              <div class="timeline" id="timeline"></div>
+
+              <button class="outline-button" id="addStudyBlock">
+                ＋ Add study block
+              </button>
+            </section>
+
+            <!-- PROGRESS -->
+            <section class="panel progress-panel" id="progress">
+              <div class="panel-heading">
+                <div>
+                  <p class="eyebrow">PROGRESS</p>
+                  <h2>Weekly glow-up</h2>
+                </div>
+              </div>
+
+              <div class="progress-content">
+                <div class="progress-ring" id="progressRing">
+                  <div>
+                    <strong id="ringPercent">0%</strong>
+                    <span>done</span>
+                  </div>
+                </div>
+
+                <div>
+                  <strong id="progressText">
+                    0 tasks finished
+                  </strong>
+
+                  <p>
+                    You’re building momentum one focused session at a time.
+                  </p>
+                </div>
+              </div>
+
+              <div class="progress-footer">
+                <span>Keep going — you’ve got this</span>
+                <span>✦</span>
+              </div>
+            </section>
+          </aside>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ADD TASK MODAL -->
+  <div class="modal-backdrop hidden" id="modalBackdrop">
+    <div class="modal">
+      <button class="modal-close" id="closeModal">×</button>
+
+      <p class="eyebrow">A LITTLE STEP FORWARD</p>
+      <h2>Add a new task</h2>
+
+      <p>
+        Give it the details and LoadMap will find its place.
+      </p>
+
+      <form id="taskForm">
+        <label>
+          Task name
+
+          <input
+            name="title"
+            required
+            placeholder="e.g. Draft project introduction"
+          >
+        </label>
+
+        <div class="form-row">
+          <label>
+            Subject
+
+            <select name="subject">
+              <option>Free Elective</option>
+              <option>Website Development</option>
+              <option>Multimedia</option>
+              <option>Fundamentals of Research</option>
+              <option>Database Administration</option>
+              <option>Art Appreciation</option>
+              <option>System Integration and Architecture</option>
+            </select>
+          </label>
+
+          <label>
+            Task type
+
+            <select name="type">
+              <option>Assignment</option>
+              <option>Project</option>
+              <option>Quiz</option>
+              <option>Exam</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="form-row">
+          <label>
+            Deadline
+
+            <input
+              id="dueInput"
+              name="due"
+              type="date"
+              required
+            >
+          </label>
+
+          <label>
+            Estimated hours
+
+            <input
+              name="hours"
+              type="number"
+              min="0.5"
+              max="24"
+              step="0.5"
+              value="1"
+              required
+            >
+          </label>
+        </div>
+
+        <label>
+          Importance
+
+          <select name="importance">
+            <option value="1">Normal</option>
+            <option value="2">Important</option>
+            <option value="3">Very important</option>
+          </select>
+        </label>
+
+        <button class="submit-button" type="submit">
+          Add to my map →
+        </button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
